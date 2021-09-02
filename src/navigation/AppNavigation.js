@@ -9,9 +9,6 @@ const PostNavigator = createStackNavigator(
     Post: {
       screen: PostScreen
     }
-  },
-  {
-    initialRouteName: 'Main'
   }
 )
 
