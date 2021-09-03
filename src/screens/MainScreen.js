@@ -1,5 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet, Button, FlatList } from 'react-native'
+import { Post } from '../components/post'
+import { DATA } from '../data'
 
 export const MainScreen = ({ navigation }) => {
   const goToPost = () => {
@@ -7,9 +9,12 @@ export const MainScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.center}>
-      <Text>MainScreen</Text>
-      <Button title="Go to Post" onPress={goToPost} />
+    <View style={styles.wrapper}>
+      <FlatList
+        data={DATA}
+        keyExtractor={(post) => post.id.toString()}
+        renderItem={({ item }) => <Post post={item} />}
+      />
     </View>
   )
 }
@@ -19,9 +24,7 @@ MainScreen.navigationOptions = {
 }
 
 const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  wrapper: {
+    padding: 10,
   },
 })
