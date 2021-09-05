@@ -42,27 +42,30 @@ const BookedNavigator = createStackNavigator(
   }
 )
 
-const BottomNavigator = createBottomTabNavigator({
-  Post: {
-    screen: PostNavigator,
-    navigationOptions: {
-      tabBarIcon: (info) => (
-        <Ionicons name="ios-albums" size={25} color={info.tintColor} />
-      ),
+const BottomNavigator = createBottomTabNavigator(
+  {
+    Post: {
+      screen: PostNavigator,
+      navigationOptions: {
+        tabBarIcon: (info) => (
+          <Ionicons name="ios-albums" size={25} color={info.tintColor} />
+        ),
+      },
+    },
+    Booked: {
+      screen: BookedNavigator,
+      navigationOptions: {
+        tabBarIcon: (info) => (
+          <Ionicons name="ios-star" size={25} color={info.tintColor} />
+        ),
+      },
     },
   },
-  Booked: {
-    screen: BookedNavigator,
-    navigationOptions: {
-      tabBarIcon: (info) => (
-        <Ionicons name="ios-star" size={25} color={info.tintColor} />
-      ),
+  {
+    tabBarOptions: {
+      activeTintColor: THEME.MAIN_COLOR,
     },
-  },
-}, {
-  tabBarOptions: {
-    activeTintColor: THEME.MAIN_COLOR
   }
-})
+)
 
 export const AppNavigation = createAppContainer(BottomNavigator)
